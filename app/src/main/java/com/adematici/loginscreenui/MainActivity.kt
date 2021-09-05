@@ -40,7 +40,7 @@ fun Navigation() {
             SplashScreen(navController = navController)
         }
         composable("login_screen") {
-            LoginScreen()
+            LoginScreen(navController = navController)
         }
         composable("register_screen") {
             RegisterScreen()
