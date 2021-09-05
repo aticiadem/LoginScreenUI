@@ -2,8 +2,10 @@ package com.adematici.loginscreenui.ui.common
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -12,6 +14,9 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -25,13 +30,17 @@ fun CommonText(
     text: String,
     color: Color = Color.Black,
     fontSize: TextUnit = 16.sp,
-    fontWeight: FontWeight = FontWeight.Normal
+    fontWeight: FontWeight = FontWeight.Normal,
+    function: () -> Unit
 ) {
     Text(
         text = text,
         color = color,
         fontSize = fontSize,
-        fontWeight = fontWeight
+        fontWeight = fontWeight,
+        modifier = Modifier.clickable {
+            function()
+        }
     )
 }
 
@@ -91,7 +100,7 @@ fun CommonGoogleButton(
                 painter = painterResource(id = R.drawable.ic_google_logo),
                 contentDescription = "Google Logo",
                 tint = Color.Unspecified,
-                modifier = Modifier.size(30.dp)
+                modifier = Modifier.size(24.dp)
             )
             Spacer(modifier = Modifier.width(18.dp))
             Text(
@@ -107,6 +116,7 @@ fun CommonGoogleButton(
 fun CommonTextField(
     text: String,
     placeholder: String,
+    isPasswordTextField: Boolean,
     onValueChange: (String) -> Unit
 ) {
     OutlinedTextField(
@@ -119,7 +129,9 @@ fun CommonTextField(
             focusedBorderColor = PinkColor,
             cursorColor = Color.Black
         ),
-        shape = RoundedCornerShape(20.dp),
-        modifier = Modifier.fillMaxWidth()
+        shape = RoundedCornerShape(15.dp),
+        modifier = Modifier.fillMaxWidth(),
+        visualTransformation = if (isPasswordTextField) PasswordVisualTransformation()
+        else VisualTransformation.None
     )
 }
