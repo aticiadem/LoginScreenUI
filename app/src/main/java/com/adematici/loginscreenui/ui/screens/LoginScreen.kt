@@ -25,14 +25,13 @@ fun LoginScreen(navController: NavController) {
     Surface(
         modifier = Modifier
             .fillMaxSize()
-            .padding(start = 30.dp, end = 30.dp)
+            .padding(start = 30.dp, end = 30.dp, top = 20.dp, bottom = 20.dp)
     ) {
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Spacer(modifier = Modifier.weight(0.05f))
             Column(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.Start,
@@ -46,7 +45,7 @@ fun LoginScreen(navController: NavController) {
                     color = LightGrayColor
                 ) {}
             }
-            Spacer(modifier = Modifier.weight(0.2f))
+            Spacer(modifier = Modifier.height(60.dp))
             CommonTextField(
                 text = email,
                 placeholder = "Email",
@@ -95,7 +94,6 @@ fun LoginScreen(navController: NavController) {
                     navController.navigate("register_screen")
                 }
             }
-            Spacer(modifier = Modifier.weight(0.05f))
         }
     }
 }

@@ -43,7 +43,7 @@ fun Navigation() {
             LoginScreen(navController = navController)
         }
         composable("register_screen") {
-            RegisterScreen()
+            RegisterScreen(navController = navController)
         }
     }
 }
